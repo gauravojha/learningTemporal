@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <property name="LOGS" value="./logs" />
+
+    <springProfile name="default | prod-local">
+        <appender name="Console"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <Pattern>
+                    %d{yyyy-MM-dd HH:mm:ss} [%thread] [%mdc] %-5level %logger{36} - %msg%n
+                </Pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+
+  <!-- LOG everything at INFO level -->
+  <root level="info">
+    <appender-ref ref="Console" />
+  </root>
+
+
+
+</configuration>
