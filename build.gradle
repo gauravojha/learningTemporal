@@ -21,6 +21,13 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "io.opentelemetry:opentelemetry-bom:1.39.0"
+        mavenBom "io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:2.4.0-alpha"
+    }
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
@@ -30,6 +37,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'io.temporal:temporal-spring-boot-starter-alpha:1.23.2'
     testImplementation group: 'io.temporal', name: 'temporal-testing', version: '1.23.2'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+    implementation 'io.opentelemetry:opentelemetry-extension-trace-propagators'
+    implementation 'io.opentelemetry:opentelemetry-opentracing-shim'
+    implementation 'io.opentracing:opentracing-util:0.33.0'
 }
 
 tasks.named('test') {
